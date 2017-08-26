@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.wj.dao.DemoInfoMapper" >
+  <resultMap id="BaseResultMap" type="org.wj.model.DemoInfo" >
+    <id column="id" property="id" jdbcType="CHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="info1" property="info1" jdbcType="INTEGER" />
+    <result column="info2" property="info2" jdbcType="VARCHAR" />
+    <result column="infon" property="infon" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from demo_info
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="org.wj.model.DemoInfo" >
+    insert into demo_info (id, name, info1, 
+      info2, infon)
+    values (#{id,jdbcType=CHAR}, #{name,jdbcType=VARCHAR}, #{info1,jdbcType=INTEGER}, 
+      #{info2,jdbcType=VARCHAR}, #{infon,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="org.wj.model.DemoInfo" >
+    update demo_info
+    set name = #{name,jdbcType=VARCHAR},
+      info1 = #{info1,jdbcType=INTEGER},
+      info2 = #{info2,jdbcType=VARCHAR},
+      infon = #{infon,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select id, name, info1, info2, infon
+    from demo_info
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, name, info1, info2, infon
+    from demo_info
+  </select>
+</mapper>

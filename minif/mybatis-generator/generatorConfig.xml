@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+	<classPathEntry location="/Users/wujian/Work/m2/repository/mysql/mysql-connector-java/5.1.18/mysql-connector-java-5.1.18.jar" />
+
+	<context id="MySqlTables" targetRuntime="MyBatis3Simple">
+		<!-- 关闭注解信息 -->
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306/mydemo" userId="root" password="root">
+		</jdbcConnection>
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="true" />
+		</javaTypeResolver>
+
+		<javaModelGenerator targetPackage="org.wj.model"
+			targetProject="./src/main/java" />
+
+		<sqlMapGenerator targetPackage="mapper"
+			targetProject="./src/main/resources" />
+
+		<javaClientGenerator targetPackage="org.wj.dao"
+			type="XMLMAPPER" targetProject="./src/main/java" />
+
+		<table tableName="demo_info" />
+	</context>
+</generatorConfiguration>
